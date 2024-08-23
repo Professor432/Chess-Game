@@ -119,7 +119,11 @@ function movePiece(targetSquare) {
         if (pieceType === pieces.archer) {
             archerMoves[currentPlayer] = archerMoves[currentPlayer] === 'bishop' ? 'rook' : 'bishop';
         }
-
+        if(isGameOver())
+        {
+            alert(`${currentPlayer === 'player1' ? 'White' : 'Black'} wins!`);
+            chessboard.removeEventListener('click', handleSquareClick);
+        }
         // Check if the move results in game over
         if (pieceType === pieces.king && isGameOver()) {
             alert(`${currentPlayer === 'player1' ? 'White' : 'Black'} wins!`);
